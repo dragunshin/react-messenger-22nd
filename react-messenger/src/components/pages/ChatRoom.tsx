@@ -16,6 +16,7 @@ export default function ChatRoom() {
   const nav = useNavigate();
   const { roomId = "default" } = useParams();
 
+  const today = new Date(); // 날짜 3주차 과제에서는 일단 17일로 고정
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -95,7 +96,7 @@ export default function ChatRoom() {
         >
           <img src="/icons/leftDir.svg" alt="" className="w-5 h-5" />
         </button>
-        <div className="text-[15px] font-semibold">3D 디자인 (1)</div>
+        <div className="text-[18px] font-semibold">3D 디자인 (1) <span className="px-1 text-[16px] text-gray-400 font-light">24</span></div>
 
         <div className="ml-auto">
           <button className="p-2 rounded-full hover:bg-gray-100 active:bg-gray-200">
@@ -121,53 +122,51 @@ export default function ChatRoom() {
         </button>
       </div>
       {/* 메시지 리스트 */}
-      <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-1 space-y-4">
+      <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-2 space-y-4">
         {messages.map((m) => {
           const mine = m.user === "me";
           return (
             <div key={m.id}>
               {m.date && (
-                <div className="my-2 grid place-items-center">
-                  <span className="px-3 py-1 rounded-full bg-black text-white text-[11px]">
+                <div className="mb-6 grid place-items-center">
+                  <div className="inline-flex items-center justify-center 
+                  px-3 py-1 rounded-full bg-black w-[80px] h-[24px]">
+                  <span className=" text-white text-[12px] leading-[16px]">
                     {m.date}
                   </span>
+                  </div>
                 </div>
               )}
 
               {/* 각 메시지 블럭 */}
-              <div className={`flex ${mine ? "justify-end" : "justify-start"}`}>
-                {/* 상대 메시지는 아바타+이름 렌더 */}
-                {!mine && (
-                  <div className="mr-2 shrink-0 flex items-start gap-2 translate-y-1 ">
+              <div className={`${mine ? "justify-end" : "justify-start"}`}>
+                {/* 상대 메시지*/}
+                {!mine ? (
+                  <div className="mb-1 py-2 flex items-start gap-2">
                     <img
                       src={m.url || "/icons/defaultProfile.svg"}
                       alt={m.name || "user"}
-                      className="w-[22px] h-7 rounded-full "
+                      className="w-[24px] h-[24px] bg-gray-500 rounded-full "
                     />
-                    <span className="mt-1 text-[10px] text-gray-500 max-w-[70px] truncate">
-                      {m.name || "user"}
-                    </span>
+                    <div className="flex flex-col">
+                      <span className="text-[14px] max-w-[70px] truncate">{m.name || "user"}</span>
+                      <div className="flex flex-row items-end gap-1">
+                        <span className="mt-2 inline-block px-3 py-2 text-[16px] leading-[22px] 
+                        max-w-[230px] break-words whitespace-pre-wrap
+                        [border-radius:0px_12px_12px_12px] bg-gray-100 text-gray-700">{m.text}</span>
+                        {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
+                      </div>    
+                    </div>
+                  </div>
+                ) : (
+                  //내 메시지
+                  <div className="flex flex-row-reverse items-end gap-1">
+                    <span className="inline-block px-3 py-2 text-[16px] leading-[22px] 
+                        max-w-[230px] break-words whitespace-pre-wrap
+                        [border-radius:12px_0px_12px_12px] bg-white border border-gray-200 text-gray-800">{m.text}</span>
+                        {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
                   </div>
                 )}
-              </div>
-              {/* 말풍선 + 시간 */}
-              <div
-                className={`flex flex-col items-end gap-1 ${mine ? "flex-row-reverse" : "flex-row"}`}
-              >
-                {" "}
-                <span
-                  className={[
-                    "inline-block",
-                    "rounded-2xl px-3 py-2 text-[13px] leading-5",
-                    "max-w-[230px]",
-                    mine
-                      ? "bg-white border border-gray-200 text-gray-800"
-                      : "bg-gray-100 text-gray-700",
-                  ].join(" ")}
-                >
-                  {m.text}
-                </span>
-                {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
               </div>
             </div>
           );
@@ -175,22 +174,22 @@ export default function ChatRoom() {
       </div>
 
       {/* 입력창 + 전송 */}
-      <div className="px-3 pb-3 pt-2">
-        <div className="rounded-full border border-gray-300 bg-white flex items-center gap-2 px-2">
+      <div className="px-1 pb-1 pt-2 ">
+        <div className="rounded-2xl bg-gray-100 flex items-end px-1 py-1">
           {/* 플러스 버튼 */}
           <button
-            className="p-2 rounded-full hover:bg-gray-100 active:bg-gray-200"
+            className="px-1 py-3 rounded-full hover:bg-gray-100 active:bg-gray-200 self-end"
             aria-label="추가"
             onClick={() => {
               /* 파일/이모지 등 */
             }}
           >
-            <img src="/icons/plus.svg" alt="" className="w-6 h-6 opacity-80" />
+            <img src="/icons/plus.svg" alt="" className="w-5 h-5 opacity-80" />
           </button>
           <textarea
             ref={inputRef}
-            className="flex-1 min-w-0 resize-none outline-none text-[13px] leading-5 max-h-[120px]
-                       py-3"
+            className="flex-1 min-w-0 resize-none outline-none text-[16px] leading-6 min-h-[44px] max-h-[140px]
+                       px-1 py-3 overflow-hidden text-gray-500"
             placeholder="다른 수강생과 대화해보세요"
             value={input}
             rows={1}
@@ -204,7 +203,7 @@ export default function ChatRoom() {
             style={{ height: "44px" }}
           />
 
-          <button onClick={send} aria-label="보내기" className="active:bg-gray-200">
+          <button onClick={send} aria-label="보내기" className="p-1 active:bg-gray-200 self-end shrink-0">
             <img src="/icons/send.svg" alt="send" className="w-8 h-8 " />
           </button>
         </div>
