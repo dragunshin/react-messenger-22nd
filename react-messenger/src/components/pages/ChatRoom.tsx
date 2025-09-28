@@ -16,7 +16,7 @@ export default function ChatRoom() {
   const nav = useNavigate();
   const { roomId = "default" } = useParams();
 
-  const today = new Date(); // 날짜 3주차 과제에서는 일단 17일로 고정
+  // const today = new Date(); // 날짜 3주차 과제에서는 일단 17일로 고정
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
