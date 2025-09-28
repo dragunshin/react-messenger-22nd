@@ -76,8 +76,10 @@ export default function ChatRoom() {
     setInput(v);
     if (!inputRef.current) return;
     inputRef.current.style.height = "auto";
+    const baseH = 40;
     const maxH = 120;
-    inputRef.current.style.height = Math.min(inputRef.current.scrollHeight, maxH) + "px";
+    const finalH = Math.max(baseH,Math.min(inputRef.current.scrollHeight, maxH))
+    inputRef.current.style.height = finalH + "px";
   };
 
   // 새 메시지 들어오면 스크롤 하단
@@ -188,8 +190,8 @@ export default function ChatRoom() {
           </button>
           <textarea
             ref={inputRef}
-            className="flex-1 min-w-0 resize-none outline-none text-[16px] leading-6 min-h-[44px] max-h-[140px]
-                       px-1 py-3 overflow-hidden text-gray-500"
+            className="flex-1 min-w-0 resize-none outline-none text-[16px] leading-6 min-h-[40px] max-h-[140px]
+                       px-1 py-2 overflow-hidden text-gray-500"
             placeholder="다른 수강생과 대화해보세요"
             value={input}
             rows={1}
@@ -200,7 +202,7 @@ export default function ChatRoom() {
                 send();
               }
             }}
-            style={{ height: "44px" }}
+            style={{ height: "40px" }}
           />
 
           <button onClick={send} aria-label="보내기" className="p-1 active:bg-gray-200 self-end shrink-0">
