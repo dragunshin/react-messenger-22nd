@@ -10,7 +10,7 @@ import ChatRoom from "./components/pages/ChatRoom";
 
 function Layout() {
   const location = useLocation();
-  const hideNav = location.pathname.startsWith("/chat");
+  const hideNav = location.pathname.startsWith("/chat/");
   return (
       <div className="h-full flex flex-col">
         {/* 메인 컨텐츠 */}
