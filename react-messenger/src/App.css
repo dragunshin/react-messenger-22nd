@@ -15,7 +15,7 @@
   --color-gray-400: #a6a6a6;
   --color-gray-300: #d6d6d6;
   --color-gray-200: #e9e9e9;
-  --color-gray-100: #e9e9e9;
+  --color-gray-100: #f2f2f2;
   --color-gray-0: #f9f9f9;
   /* B/W */
   --color-black: #292929;
@@ -38,39 +38,39 @@
 
 /* Head */
 @utility h1-bd {
-  @apply text-[24pt] leading-[120%] tracking-[0.02em] font-bold;
+  @apply text-[24px] leading-[120%] tracking-[0.02em] font-bold;
 }
 @utility h2-bd {
-  @apply text-[20pt] leading-[120%] tracking-[0.02em] font-bold;
+  @apply text-[20px] leading-[120%] tracking-[0.02em] font-bold;
 }
 @utility h3-md {
-  @apply text-[18pt] leading-[120%] tracking-[0.02em] font-medium;
+  @apply text-[18px] leading-[120%] tracking-[0.02em] font-medium;
 }
 /* Body / Caption */
 @utility body1-md {
-  @apply text-[16pt] leading-[120%] tracking-[0.02em] font-medium;
+  @apply text-[16px] leading-[120%] tracking-[0.02em] font-medium;
 }
 @utility body1-bd {
-  @apply text-[16pt] leading-[120%] tracking-[0.02em] font-bold;
+  @apply text-[16px] leading-[120%] tracking-[0.02em] font-bold;
 }
 @utility body1-sb {
-  @apply text-[16pt] leading-[120%] tracking-[0.02em] font-semibold;
+  @apply text-[16px] leading-[120%] tracking-[0.02em] font-semibold;
 }
 @utility body2-md {
-  @apply text-[14pt] leading-[120%] tracking-[0.02em] font-medium;
+  @apply text-[14px] leading-[120%] tracking-[0.02em] font-medium;
 }
 @utility body2-sb {
-  @apply text-[14pt] leading-[120%] tracking-[0.02em] font-semibold;
+  @apply text-[14px] leading-[120%] tracking-[0.02em] font-semibold;
 }
 @utility cap1-md {
-  @apply text-[12pt] leading-[120%] tracking-[0.02em] font-medium;
+  @apply text-[12px] leading-[120%] tracking-[0.02em] font-medium;
 }
 @utility cap1-sb {
-  @apply text-[12pt] leading-[120%] tracking-[0.02em] font-semibold;
+  @apply text-[12px] leading-[120%] tracking-[0.02em] font-semibold;
 }
 @utility cap2-md {
-  @apply text-[10pt] leading-[120%] tracking-[0em]   font-medium;
+  @apply text-[10px] leading-[120%] tracking-[0em]   font-medium;
 }
 @utility cap2-sb {
-  @apply text-[10pt] leading-[120%] tracking-[0em]   font-semibold;
+  @apply text-[10px] leading-[120%] tracking-[0em]   font-semibold;
 }

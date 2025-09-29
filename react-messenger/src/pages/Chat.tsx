@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Dropdown from "../Dropdown";
+import Dropdown from "../components/Dropdown";
 
 const semesters = ["25년 1학기", "24년 2학기", "24년 1학기"];
 

@@ -90,7 +90,7 @@ export default function ChatRoom() {
   return (
     <div className="h-full flex flex-col bg-white">
       {/* 상단 바 */}
-      <header className="px-3 py-2 flex items-center gap-2 border-b border-gray-200">
+      <header className="px-3 py-2 flex items-center gap-2 border-gray-200">
         <button
           onClick={() => nav(-1)}
           className="p-2 -ml-2 rounded-full hover:bg-gray-100 active:bg-gray-200"
@@ -116,12 +116,14 @@ export default function ChatRoom() {
       </header>
 
       {/* 안내문 */}
-      <div className="px-4 py-2 text-[11.5px] text-center text-gray-300 leading-snug">
-        누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 준수해주세요.
+      <div className="py-2 bg-gray-0">
+        <p className="mx-auto max-w-[309px] max-h-[42px]  text-center font-normal text-[12px] leading-[120%] text-gray-300">
+          누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 준수해주세요.
         커뮤니티 이용규칙을 위반할 경우 서비스 이용이 제한될 수 있습니다.{" "}
-        <button className="underline text-gray-300 hover:bg-gray-100 active:bg-gray-200" onClick={() => {}}>
+        <a href="#" className="underline text-gray-300 hover:bg-gray-100 active:bg-gray-200" onClick={() => {}}>
           커뮤니티 이용규칙 전체 보기
-        </button>
+        </a>
+        </p>
       </div>
       {/* 메시지 리스트 */}
       <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-2 space-y-4">
@@ -155,7 +157,7 @@ export default function ChatRoom() {
                       <div className="flex flex-row items-end gap-1">
                         <span className="mt-2 inline-block px-3 py-2 text-[16px] leading-[22px] 
                         max-w-[230px] break-words whitespace-pre-wrap
-                        [border-radius:0px_12px_12px_12px] bg-gray-100 text-gray-700">{m.text}</span>
+                        [border-radius:0px_12px_12px_12px] bg-gray-100 text-gray-500">{m.text}</span>
                         {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
                       </div>    
                     </div>
@@ -177,7 +179,7 @@ export default function ChatRoom() {
 
       {/* 입력창 + 전송 */}
       <div className="px-1 pb-1 pt-2 ">
-        <div className="rounded-2xl bg-gray-100 flex items-end px-1 py-1">
+        <div className="rounded-3xl bg-gray-100 flex items-end px-1 py-1">
           {/* 플러스 버튼 */}
           <button
             className="px-1 py-3 rounded-full hover:bg-gray-100 active:bg-gray-200 self-end"
@@ -191,7 +193,7 @@ export default function ChatRoom() {
           <textarea
             ref={inputRef}
             className="flex-1 min-w-0 resize-none outline-none text-[16px] leading-6 min-h-[40px] max-h-[140px]
-                       px-1 py-2 overflow-hidden text-gray-500"
+                       px-1 py-2 overflow-hidden text-gray-300"
             placeholder="다른 수강생과 대화해보세요"
             value={input}
             rows={1}

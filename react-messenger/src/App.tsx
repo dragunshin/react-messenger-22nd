@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import Home from "./components/pages/Home";
-import Chat from "./components/pages/Chat";
-import Board from "./components/pages/Board";
-import Benefit from "./components/pages/Benefit";
-import TimeTable from "./components/pages/TimeTable";
-import ChatRoom from "./components/pages/ChatRoom";
+import Home from "./pages/Home";
+import Chat from "./pages/Chat";
+import Board from "./pages/Board";
+import Benefit from "./pages/Benefit";
+import TimeTable from "./pages/TimeTable";
+import ChatRoom from "./pages/ChatRoom";
 
 function Layout() {
   const location = useLocation();
@@ -16,7 +16,7 @@ function Layout() {
         {/* 메인 컨텐츠 */}
         <div className="flex-1 overflow-y-auto">
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/chat/:roomId" element={<ChatRoom />} />
             <Route path="/board" element={<Board />} />
