@@ -20,14 +20,14 @@ export default function Chat() {
   return (
     <div className="w-full h-full bg-white flex flex-col">
       {/* 상단 영역 */}
-      <header className="px-5 pt-3 pb-2">
+      <header className="px-5 pt-3">
         {/* 타이틀 줄 */}
         <div className="flex items-center justify-between h1-bd text-black">
           {/* 탭 (비활성 톤) */}
-          <div className="mt-1 flex items-center gap-3 m-1 py-2 body2-sb text-neutral-400 text-[19px]">
-            <span className="text-neutral-900 text-[20px]">강의실</span>
-            <span className="text-neutral-200 text-[20px]">그룹챗</span>
-            <span className="text-neutral-200 text-[20px]">쪽지</span>
+          <div className="mt-1 flex items-center gap-3 py-2 body2-sb text-neutral-400 text-[19px]">
+            <span className="text-neutral-900 text-2xl">강의실</span>
+            <span className="text-neutral-200 text-2xl">그룹챗</span>
+            <span className="text-neutral-200 text-2xl">쪽지</span>
           </div>
           {/* 우측 프로필/설정 아이콘 (플레이스홀더) */}
           <button
@@ -55,9 +55,9 @@ export default function Chat() {
       </header>
       {/* 리스트 */}
       <main className="flex-1">
-        <ul className="divide-y divide-neutral-200 px-5">
+        <ul className="divide-y divide-neutral-200">
           {ROOM.map((r) => (
-            <li key={r.id} className="py-3">
+            <li key={r.id} className="mt-4 py-3 px-5">
               <button
                 type="button"
                 onClick={() => nav(`/chat/${r.id}`)}
@@ -67,7 +67,7 @@ export default function Chat() {
                 <div className="h-12 w-12 rounded-full bg-gray-400 shrink-0" />
                 {/* 타이틀/이름 */}
                 <div className="flex-1 text-left">
-                  <div className="text-[16px] font-semibold text-neutral-800">{r.title}</div>
+                  <div className="text-[16px] font-medium text-neutral-800">{r.title}</div>
                   <div className="text-[12px] text-neutral-500">{r.name}</div>
                 </div>
                 {/* 우측 + 아이콘 (회색 버튼) */}

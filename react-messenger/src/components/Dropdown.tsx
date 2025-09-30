@@ -49,7 +49,7 @@ export default function Dropdown({
         onClick={() => setOpen((v) => !v)}
         className={`w-[298px] h-[41px] ${surfaceClass}
         rounded-[10px] border border-[#D9D9D9]
-        px-[10px] py-2
+        px-3 py-2
         text-[16px] text-neutral-800
         flex items-center justify-between
         focus:outline-none focus:ring-2 focus:#E9E9E9`}
