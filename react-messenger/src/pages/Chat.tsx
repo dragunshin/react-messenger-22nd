@@ -52,12 +52,11 @@ export default function Chat() {
           surface="gray" // 하얀/회색 전환: 'white' | 'gray'
           className="self-start" // 좌측 정렬 필요 시
         />
-      </header>
-      {/* 리스트 */}
+        {/* 리스트 */}
       <main className="flex-1">
         <ul className="divide-y divide-neutral-200">
           {ROOM.map((r) => (
-            <li key={r.id} className="mt-4 py-3 px-5">
+            <li key={r.id} className="mt-4 py-3">
               <button
                 type="button"
                 onClick={() => nav(`/chat/${r.id}`)}
@@ -84,6 +83,8 @@ export default function Chat() {
           ))}
         </ul>
       </main>
+      </header>
+      
     </div>
   );
 }
