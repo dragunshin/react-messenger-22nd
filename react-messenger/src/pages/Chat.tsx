@@ -18,7 +18,7 @@ export default function Chat() {
   const [semester, setSemester] = useState(semesters[0]);
 
   return (
-    <div className="w-full h-full bg-white flex flex-col px-5">
+    <div className="w-full h-full bg-white flex flex-col">
       {/* 상단 영역 */}
       <header className="pt-3">
         {/* 타이틀 줄 */}
@@ -56,7 +56,7 @@ export default function Chat() {
       <main className="flex-1">
         <ul className="divide-y divide-neutral-200">
           {ROOM.map((r) => (
-            <li key={r.id} className="mt-4 py-3">
+            <li key={r.id} className="mt-4 py-3 px-2">
               <button
                 type="button"
                 onClick={() => nav(`/chat/${r.id}`)}
