@@ -18,9 +18,9 @@ export default function Chat() {
   const [semester, setSemester] = useState(semesters[0]);
 
   return (
-    <div className="w-full h-full bg-white flex flex-col">
+    <div className="w-full h-full bg-white flex flex-col px-5">
       {/* 상단 영역 */}
-      <header className="px-5 pt-3">
+      <header className="pt-3">
         {/* 타이틀 줄 */}
         <div className="flex items-center justify-between h1-bd text-black">
           {/* 탭 (비활성 톤) */}
