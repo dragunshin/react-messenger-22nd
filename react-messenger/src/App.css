@@ -36,6 +36,15 @@
   font-family: "Pretendard", sans-serif;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
 /* Head */
 @utility h1-bd {
   @apply text-[24px] leading-[120%] tracking-[0.02em] font-bold;

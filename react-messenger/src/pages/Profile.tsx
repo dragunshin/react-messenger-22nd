@@ -6,9 +6,9 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState<"실명" | "게시판">("실명");
 
   return (
-    <div className="h-full bg-white flex flex-col overflow-y-auto">
+    <div className="h-full bg-white flex flex-col overflow-y-auto scrollbar-hide">
       {/* 헤더 */}
-      <header className="px-1.5 py-3 flex items-center gap-3 border-b border-gray-100">
+      <header className="px-1.5 py-3 flex items-center gap-3 ">
         <button
           onClick={() => nav(-1)}
           className="p-2 -ml-2 rounded-full hover:bg-gray-100 active:bg-gray-200"
@@ -23,7 +23,7 @@ export default function Profile() {
       <div className="px-4 py-3 flex gap-2">
         <button
           onClick={() => setActiveTab("실명")}
-          className={`px-3 py-2 rounded-full text-[14px] font-medium transition-colors flex items-center gap-1 ${
+          className={`px-3 py-2 rounded-full text-[14px] h-[26px] font-medium transition-colors flex items-center gap-1 ${
             activeTab === "실명"
               ? "bg-black text-white"
               : "bg-gray-100 text-gray-400"
@@ -34,7 +34,7 @@ export default function Profile() {
         </button>
         <button
           onClick={() => setActiveTab("게시판")}
-          className={`px-3 py-2 rounded-full text-[14px] font-medium transition-colors flex items-center gap-1 ${
+          className={`px-3 py-2 rounded-full text-[14px] h-[26px] font-medium transition-colors flex items-center gap-1 ${
             activeTab === "게시판"
               ? "bg-black text-white"
               : "bg-gray-100 text-gray-400"
@@ -175,7 +175,7 @@ export default function Profile() {
           </div>
         ) : (
           <div className="space-y-6">
-            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 flex items-center gap-3">
+            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 flex items-center gap-3 w-[303px] h-[118px]">
               <div className="">
                 <img src="/icons/profile.svg" alt="profile" className="w-10 h-10" />
               </div>
