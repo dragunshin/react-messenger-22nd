@@ -101,15 +101,15 @@ export default function ChatRoom() {
         <div className="text-[18px] font-semibold">3D 디자인 (1) <span className="px-1 text-[16px] text-gray-400 font-light">24</span></div>
 
         <div className="ml-auto">
-          <button className="p-2 rounded-full hover:bg-gray-100 active:bg-gray-200">
+          <button
+            className="p-2 rounded-full hover:bg-gray-100 active:bg-gray-200"
+            onClick={() => nav(`/chat/${roomId}/participants`)}
+            aria-label="menu"
+          >
             <img
               src="/icons/hamburger.svg"
               alt=""
               className="w-4 h-4 opacity-60"
-              aria-label="menu"
-              onClick={() => {
-                /*menu open*/
-              }}
             />
           </button>
         </div>

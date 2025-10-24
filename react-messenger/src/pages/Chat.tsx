@@ -32,16 +32,9 @@ export default function Chat() {
           {/* 우측 프로필/설정 아이콘 (플레이스홀더) */}
           <button
             type="button"
-            className="h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-500 hover:bg-gray-500"
-            aria-label="profile"
-            onClick={() => {}}
+            onClick={() => nav("/profile")}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" className="opacity-70">
-              <path
-                d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z"
-                fill="currentColor"
-              />
-            </svg>
+            <img src="/icons/profile.svg" alt="profile" className="w-6 h-6 opacity-70" aria-label="profile"/>
           </button>
         </div>
 
@@ -69,15 +62,8 @@ export default function Chat() {
                   <div className="text-[16px] font-medium text-neutral-800">{r.title}</div>
                   <div className="text-[12px] text-neutral-500">{r.name}</div>
                 </div>
-                {/* 우측 + 아이콘 (회색 버튼) */}
-                <div
-                  className="h-7 w-7 rounded-full bg-neutral-200 flex items-center justify-center text-neutral-500"
-                  aria-hidden
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24">
-                    <path d="M11 11V6h2v5h5v2h-5v5h-2v-5H6v-2h5z" fill="currentColor" />
-                  </svg>
-                </div>
+                {/* 우측 + 아이콘 */}
+                <img src="icons/chat-bubble-btn.svg" alt="plus" className="w-7 h-7" aria-hidden="true" />
               </button>
             </li>
           ))}
