@@ -27,6 +27,14 @@ type Msg = {
   url?: string;
 };
 
+type RoomInfo = {
+  id: string;
+  title: string;
+  name: string;
+  semester: string;
+  participantCount: number;
+};
+
 export default function ChatRoom() {
   const nav = useNavigate();
   const { roomId = "default" } = useParams();
@@ -35,6 +43,7 @@ export default function ChatRoom() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [roomInfo, setRoomInfo] = useState<RoomInfo | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
   // 유저 데이터 로드
@@ -46,6 +55,17 @@ export default function ChatRoom() {
       })
       .catch((err) => console.error("Failed to load users:", err));
   }, []);
+
+  // 채팅방 정보 로드
+  useEffect(() => {
+    fetch("/data/rooms.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const room = data.rooms.find((r: RoomInfo) => r.id === roomId);
+        setRoomInfo(room || null);
+      })
+      .catch((err) => console.error("Failed to load room info:", err));
+  }, [roomId]);
 
   // 메시지 데이터 로드 (JSON에서 초기 로드, localStorage는 변경사항 저장용)
   useEffect(() => {
@@ -143,7 +163,9 @@ export default function ChatRoom() {
         >
           <img src="/icons/leftDir.svg" alt="" className="w-5 h-5" />
         </button>
-        <div className="text-[18px] font-semibold">3D 디자인 (1) <span className="px-1 text-[16px] text-gray-400 font-light">24</span></div>
+        <div className="text-[18px] font-semibold">
+          {roomInfo?.title || "채팅방"} <span className="px-1 text-[16px] text-gray-400 font-light">{roomInfo?.participantCount || 0}</span>
+        </div>
 
         <div className="ml-auto">
           <button

@@ -27,6 +27,7 @@ interface ParticipantsStore {
   setMedia: (media: Media[]) => void;
   setRoomInfo: (roomInfo: RoomInfo) => void;
   loadParticipants: () => void;
+  loadRoomInfo: (roomId: string) => void;
 }
 
 export const useParticipantsStore = create<ParticipantsStore>((set) => ({
@@ -51,6 +52,24 @@ export const useParticipantsStore = create<ParticipantsStore>((set) => ({
       set({ participants: data.users || [] });
     } catch (error) {
       console.error("Failed to load participants:", error);
+    }
+  },
+  loadRoomInfo: async (roomId: string) => {
+    try {
+      const response = await fetch("/data/rooms.json");
+      const data = await response.json();
+      const room = data.rooms.find((r: any) => r.id === roomId);
+      if (room) {
+        set({
+          roomInfo: {
+            roomType: "강의실",
+            roomName: room.title,
+            instructor: room.name,
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Failed to load room info:", error);
     }
   },
 }));
