@@ -1,0 +1,30 @@
+{
+  "messages": {
+    "room-3d": [
+      {
+        "id": 1,
+        "userId": 1,
+        "text": "오늘 강의 휴강 맞나요?",
+        "date": "2025.09.17",
+        "time": "오후 2:05"
+      },
+      {
+        "id": 2,
+        "userId": 34,
+        "text": "넵 보강은 28일이에요!",
+        "time": "오후 2:05"
+      },
+      {
+        "id": 3,
+        "userId": 1,
+        "text": "감사합니다~",
+        "time": "오후 2:05"
+      }
+    ],
+    "room-physical": [],
+    "room-space": [],
+    "room-life": [],
+    "room-human": [],
+    "room-product": []
+  }
+}

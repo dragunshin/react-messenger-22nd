@@ -2,6 +2,21 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
+type User = {
+  id: number;
+  name: string;
+  profileUrl: string;
+  isMe: boolean;
+};
+
+type MessageData = {
+  id: number;
+  userId: number;
+  text: string;
+  date?: string;
+  time?: string;
+};
+
 type Msg = {
   id: number;
   user: "me" | "other";
@@ -16,33 +31,63 @@ export default function ChatRoom() {
   const nav = useNavigate();
   const { roomId = "default" } = useParams();
 
-  // const today = new Date(); // 날짜 3주차 과제에서는 일단 17일로 고정
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  const [messages, setMessages] = useState<Msg[]>([
-    { id: 1, user: "me", text: "오늘 강의 휴강 맞나요?", date: "2025.09.17", time: "오후 2:05" },
-    {
-      id: 2,
-      user: "other",
-      text: "넵 보강은 28일이에요!",
-      time: "오후 2:05",
-      name: "학생 34",
-      url: "/icons/defaultProfile.svg",
-    },
-    { id: 3, user: "me", text: "감사합니다~", time: "오후 2:05" },
-  ]);
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const listRef = useRef<HTMLDivElement>(null);
 
-  // 첫 렌더링
+  // 유저 데이터 로드
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(`messages:${roomId}`);
-      if (saved) setMessages(JSON.parse(saved));
-    } catch (e) {
-      console.warn("Failed to parse messages from localStorage:", e);
-    }
-  }, [roomId]);
+    fetch("/data/users.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data.users || []);
+      })
+      .catch((err) => console.error("Failed to load users:", err));
+  }, []);
+
+  // 메시지 데이터 로드 (JSON에서 초기 로드, localStorage는 변경사항 저장용)
+  useEffect(() => {
+    if (users.length === 0) return; // 유저 데이터 로드 전까지 대기
+
+    // JSON에서 초기 데이터 로드
+    fetch("/data/messages.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const roomMessages: MessageData[] = data.messages[roomId] || [];
+        const transformedMessages = roomMessages.map((msg) => {
+          const user = users.find((u) => u.id === msg.userId);
+          return {
+            id: msg.id,
+            user: user?.isMe ? ("me" as const) : ("other" as const),
+            text: msg.text,
+            date: msg.date,
+            time: msg.time,
+            name: user?.name,
+            url: user?.profileUrl,
+          };
+        });
+
+        // localStorage에 저장된 추가 메시지가 있는지 확인
+        try {
+          const saved = localStorage.getItem(`messages:${roomId}`);
+          if (saved) {
+            const savedMessages = JSON.parse(saved);
+            // JSON 초기 데이터 이후에 추가된 메시지만 합침
+            const initialIds = transformedMessages.map(m => m.id);
+            const additionalMessages = savedMessages.filter((m: Msg) => !initialIds.includes(m.id));
+            setMessages([...transformedMessages, ...additionalMessages]);
+          } else {
+            setMessages(transformedMessages);
+          }
+        } catch (e) {
+          console.warn("Failed to parse messages from localStorage:", e);
+          setMessages(transformedMessages);
+        }
+      })
+      .catch((err) => console.error("Failed to load messages:", err));
+  }, [roomId, users]);
 
   // 변경될 때마다
   useEffect(() => {

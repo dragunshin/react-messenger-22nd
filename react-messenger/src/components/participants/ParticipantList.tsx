@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { useParticipantsStore } from "../../stores/participantsStore";
 import ParticipantItem from "./ParticipantItem";
 
 export default function ParticipantList() {
-  const { participants } = useParticipantsStore();
+  const { participants, loadParticipants } = useParticipantsStore();
+
+  useEffect(() => {
+    loadParticipants();
+  }, [loadParticipants]);
 
   return (
     <div className="flex-1 overflow-y-auto px-4 py-4">

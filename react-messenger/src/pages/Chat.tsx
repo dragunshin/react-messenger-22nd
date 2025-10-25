@@ -1,21 +1,31 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdown";
 
-const semesters = ["25년 1학기", "24년 2학기", "24년 1학기"];
-
-const ROOM = [
-  { id: "room-3d", title: "3D 디자인(1)", name: "장다윤" },
-  { id: "room-physical", title: "피지컬 워크숍(1)", name: "윤재영" },
-  { id: "room-space", title: "공간디자이너의사고법", name: "조성익" },
-  { id: "room-life", title: "라이프스타일브랜드창업", name: "서호영,나훈영" },
-  { id: "room-human", title: "휴먼-로봇인터랙션디자인", name: "임덕신,최경윤" },
-  { id: "room-product", title: "제품폼팩터스튜디오(1)", name: "임동균" },
-];
+type Room = {
+  id: string;
+  title: string;
+  name: string;
+  semester: string;
+  participantCount: number;
+};
 
 export default function Chat() {
   const nav = useNavigate();
-  const [semester, setSemester] = useState(semesters[0]);
+  const [semesters, setSemesters] = useState<string[]>([]);
+  const [semester, setSemester] = useState("");
+  const [rooms, setRooms] = useState<Room[]>([]);
+
+  useEffect(() => {
+    fetch("/data/rooms.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setSemesters(data.semesters || []);
+        setSemester(data.semesters[0] || "");
+        setRooms(data.rooms || []);
+      })
+      .catch((err) => console.error("Failed to load rooms:", err));
+  }, []);
 
   return (
     <div className="w-full h-full bg-white flex flex-col">
@@ -48,7 +58,7 @@ export default function Chat() {
         {/* 리스트 */}
       <main className="flex-1">
         <ul className="divide-y divide-neutral-200">
-          {ROOM.map((r) => (
+          {rooms.map((r) => (
             <li key={r.id} className="mt-4 py-3 px-2">
               <button
                 type="button"

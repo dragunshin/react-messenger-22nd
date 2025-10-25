@@ -26,15 +26,11 @@ interface ParticipantsStore {
   setParticipants: (participants: Participant[]) => void;
   setMedia: (media: Media[]) => void;
   setRoomInfo: (roomInfo: RoomInfo) => void;
+  loadParticipants: () => void;
 }
 
 export const useParticipantsStore = create<ParticipantsStore>((set) => ({
-  participants: Array.from({ length: 24 }, (_, i) => ({
-    id: i + 1,
-    name: `학생 ${i + 1}`,
-    profileUrl: "/icons/profile.svg",
-    isMe: i === 0,
-  })),
+  participants: [],
   media: [
     { id: 1, url: "", type: "image" },
     { id: 2, url: "", type: "image" },
@@ -48,4 +44,13 @@ export const useParticipantsStore = create<ParticipantsStore>((set) => ({
   setParticipants: (participants) => set({ participants }),
   setMedia: (media) => set({ media }),
   setRoomInfo: (roomInfo) => set({ roomInfo }),
+  loadParticipants: async () => {
+    try {
+      const response = await fetch("/data/users.json");
+      const data = await response.json();
+      set({ participants: data.users || [] });
+    } catch (error) {
+      console.error("Failed to load participants:", error);
+    }
+  },
 }));

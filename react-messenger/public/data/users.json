@@ -1,0 +1,154 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "나",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": true
+    },
+    {
+      "id": 2,
+      "name": "학생 2",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 3,
+      "name": "학생 3",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 4,
+      "name": "학생 4",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 5,
+      "name": "학생 5",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 6,
+      "name": "학생 6",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 7,
+      "name": "학생 7",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 8,
+      "name": "학생 8",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 9,
+      "name": "학생 9",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 10,
+      "name": "학생 10",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 11,
+      "name": "학생 11",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 12,
+      "name": "학생 12",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 13,
+      "name": "학생 13",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 14,
+      "name": "학생 14",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 15,
+      "name": "학생 15",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 16,
+      "name": "학생 16",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 17,
+      "name": "학생 17",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 18,
+      "name": "학생 18",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 19,
+      "name": "학생 19",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 20,
+      "name": "학생 20",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 21,
+      "name": "학생 21",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 22,
+      "name": "학생 22",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 23,
+      "name": "학생 23",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 24,
+      "name": "학생 24",
+      "profileUrl": "/icons/profile.svg",
+      "isMe": false
+    },
+    {
+      "id": 34,
+      "name": "학생 34",
+      "profileUrl": "/icons/defaultProfile.svg",
+      "isMe": false
+    }
+  ]
+}

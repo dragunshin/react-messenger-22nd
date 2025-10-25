@@ -1,0 +1,47 @@
+{
+  "rooms": [
+    {
+      "id": "room-3d",
+      "title": "3D 디자인(1)",
+      "name": "장다윤",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    },
+    {
+      "id": "room-physical",
+      "title": "피지컬 워크숍(1)",
+      "name": "윤재영",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    },
+    {
+      "id": "room-space",
+      "title": "공간디자이너의사고법",
+      "name": "조성익",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    },
+    {
+      "id": "room-life",
+      "title": "라이프스타일브랜드창업",
+      "name": "서호영,나훈영",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    },
+    {
+      "id": "room-human",
+      "title": "휴먼-로봇인터랙션디자인",
+      "name": "임덕신,최경윤",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    },
+    {
+      "id": "room-product",
+      "title": "제품폼팩터스튜디오(1)",
+      "name": "임동균",
+      "semester": "25년 1학기",
+      "participantCount": 24
+    }
+  ],
+  "semesters": ["25년 1학기", "24년 2학기", "24년 1학기"]
+}
