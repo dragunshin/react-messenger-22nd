@@ -40,11 +40,13 @@ export default function Chat() {
             <span className="text-neutral-200 text-2xl">쪽지</span>
           </div>
           {/* 우측 프로필/설정 아이콘 (플레이스홀더) */}
-          <button
-            type="button"
-            onClick={() => nav("/profile")}
-          >
-            <img src="/icons/profile.svg" alt="profile" className="w-6 h-6 opacity-70" aria-label="profile"/>
+          <button type="button" onClick={() => nav("/profile")}>
+            <img
+              src="/icons/profile.svg"
+              alt="profile"
+              className="w-6 h-6 opacity-70"
+              aria-label="profile"
+            />
           </button>
         </div>
 
@@ -56,31 +58,35 @@ export default function Chat() {
           className="self-start" // 좌측 정렬 필요 시
         />
         {/* 리스트 */}
-      <main className="flex-1">
-        <ul className="divide-y divide-neutral-200">
-          {rooms.map((r) => (
-            <li key={r.id} className="mt-4 py-3 px-2">
-              <button
-                type="button"
-                onClick={() => nav(`/chat/${r.id}`)}
-                className="w-full flex items-center gap-3"
-              >
-                {/* 아바타 */}
-                <div className="h-12 w-12 rounded-full bg-gray-400 shrink-0" />
-                {/* 타이틀/이름 */}
-                <div className="flex-1 text-left">
-                  <div className="text-[16px] font-medium text-neutral-800">{r.title}</div>
-                  <div className="text-[12px] text-neutral-500">{r.name}</div>
-                </div>
-                {/* 우측 + 아이콘 */}
-                <img src="icons/chat-bubble-btn.svg" alt="plus" className="w-7 h-7" aria-hidden="true" />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </main>
+        <main className="flex-1">
+          <ul className="divide-y divide-neutral-200">
+            {rooms.map((r) => (
+              <li key={r.id} className="mt-4 py-3 px-2">
+                <button
+                  type="button"
+                  onClick={() => nav(`/chat/${r.id}`)}
+                  className="w-full flex items-center gap-3"
+                >
+                  {/* 아바타 */}
+                  <div className="h-12 w-12 rounded-full bg-gray-400 shrink-0" />
+                  {/* 타이틀/이름 */}
+                  <div className="flex-1 text-left">
+                    <div className="text-[16px] font-medium text-neutral-800">{r.title}</div>
+                    <div className="text-[12px] text-neutral-500">{r.name}</div>
+                  </div>
+                  {/* 우측 + 아이콘 */}
+                  <img
+                    src="icons/chat-bubble-btn.svg"
+                    alt="plus"
+                    className="w-7 h-7"
+                    aria-hidden="true"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </main>
       </header>
-      
     </div>
   );
 }

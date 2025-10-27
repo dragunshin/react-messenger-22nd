@@ -24,9 +24,7 @@ export default function Profile() {
         <button
           onClick={() => setActiveTab("실명")}
           className={`px-3 py-2 rounded-full text-[14px] h-[26px] font-medium transition-colors flex items-center gap-1 ${
-            activeTab === "실명"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-400"
+            activeTab === "실명" ? "bg-black text-white" : "bg-gray-100 text-gray-400"
           }`}
         >
           <img src="/icons/name.svg" alt="실명" className="" />
@@ -35,9 +33,7 @@ export default function Profile() {
         <button
           onClick={() => setActiveTab("게시판")}
           className={`px-3 py-2 rounded-full text-[14px] h-[26px] font-medium transition-colors flex items-center gap-1 ${
-            activeTab === "게시판"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-400"
+            activeTab === "게시판" ? "bg-black text-white" : "bg-gray-100 text-gray-400"
           }`}
         >
           <img src="/icons/board.svg" alt="게시판" className="" />
@@ -57,7 +53,9 @@ export default function Profile() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[18px] font-semibold text-black">정은선</span>
-                  <span className="px-2 py-0.5 bg-red-100 text-red-400 text-[10px] rounded">재학생</span>
+                  <span className="px-2 py-0.5 bg-red-100 text-red-400 text-[10px] rounded">
+                    재학생
+                  </span>
                 </div>
                 <p className="text-[12px] text-gray-400">홍익대 서울캠</p>
                 <p className="text-[12px] text-gray-400">디자인학부 산업디자인전공</p>
@@ -182,7 +180,9 @@ export default function Profile() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[18px] font-semibold text-black">미대생감자</span>
-                  <span className="px-2 py-0.5 bg-red-100 text-red-400 text-[10px] rounded">재학생</span>
+                  <span className="px-2 py-0.5 bg-red-100 text-red-400 text-[10px] rounded">
+                    재학생
+                  </span>
                 </div>
               </div>
               <button className="p-2" aria-label="edit">

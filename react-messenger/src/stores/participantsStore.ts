@@ -58,7 +58,7 @@ export const useParticipantsStore = create<ParticipantsStore>((set) => ({
     try {
       const response = await fetch("/data/rooms.json");
       const data = await response.json();
-      const room = data.rooms.find((r: any) => r.id === roomId);
+      const room = data.rooms.find((r: { id: string }) => r.id === roomId);
       if (room) {
         set({
           roomInfo: {

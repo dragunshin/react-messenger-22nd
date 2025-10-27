@@ -44,7 +44,6 @@
   display: none; /* Chrome, Safari, Opera */
 }
 
-
 /* Head */
 @utility h1-bd {
   @apply text-[24px] leading-[120%] tracking-[0.02em] font-bold;

@@ -222,20 +222,20 @@ export default function ChatRoom() {
                     <div className="flex flex-col">
                       <span className="text-[14px] max-w-[70px] truncate">{m.name || "user"}</span>
                       <div className="flex flex-row items-end gap-1">
-                        <span className="mt-2 inline-block px-3 py-2 text-[16px] leading-[22px] 
+                        <span className="mt-2 inline-block px-3 py-2 text-[16px] leading-[22px]
                         max-w-[230px] break-words whitespace-pre-wrap
                         [border-radius:0px_12px_12px_12px] bg-gray-100 text-gray-500">{m.text}</span>
                         {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
-                      </div>    
+                      </div>
                     </div>
                   </div>
                 ) : (
                   //내 메시지
                   <div className="flex flex-row-reverse items-end gap-1">
-                    <span className="inline-block px-3 py-2 text-[16px] leading-[22px] 
+                    <span className="inline-block px-3 py-2 text-[16px] leading-[22px]
                         max-w-[230px] break-words whitespace-pre-wrap
                         [border-radius:12px_0px_12px_12px] bg-white border border-gray-200 text-gray-800">{m.text}</span>
-                        {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
+                    {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
                   </div>
                 )}
               </div>

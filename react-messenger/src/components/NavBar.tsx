@@ -8,7 +8,12 @@ const items = [
     icon: "/icons/TimeTable.svg",
     iconActive: "/icons/activeTimeTable.svg",
   },
-  { to: "/board", label: "게시판", icon: "/icons/navBoard.svg", iconActive: "/icons/activeBoard.svg" },
+  {
+    to: "/board",
+    label: "게시판",
+    icon: "/icons/navBoard.svg",
+    iconActive: "/icons/activeBoard.svg",
+  },
   { to: "/chat", label: "채팅", icon: "/icons/Chat.svg", iconActive: "/icons/activeChat.svg" },
   {
     to: "/benefit",

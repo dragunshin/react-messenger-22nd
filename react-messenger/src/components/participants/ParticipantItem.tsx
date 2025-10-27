@@ -9,11 +9,7 @@ export default function ParticipantItem({ name, profileUrl, isMe }: ParticipantI
   return (
     <li className="flex items-center gap-3">
       <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden shrink-0">
-        <img
-          src={profileUrl}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
+        <img src={profileUrl} alt={name} className="w-full h-full object-cover" />
       </div>
       <span className="flex-1 text-[12px] text-black flex items-center gap-1">
         {isMe && (

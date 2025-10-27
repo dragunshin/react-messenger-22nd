@@ -10,15 +10,8 @@ export default function MediaGallery() {
       </h2>
       <div className="grid grid-cols-3 gap-2">
         {media.map((item) => (
-          <div
-            key={item.id}
-            className="aspect-square bg-gray-200 rounded-lg overflow-hidden"
-          >
-            <img
-              src={item.url}
-              alt=""
-              className="w-full h-full object-cover"
-            />
+          <div key={item.id} className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
+            <img src={item.url} alt="" className="w-full h-full object-cover" />
           </div>
         ))}
       </div>
