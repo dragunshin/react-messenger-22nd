@@ -1,6 +1,7 @@
 // src/pages/ChatRoom.tsx
 import { useParams, useNavigate } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import MessageItem from "../components/MessageItem";
 
 type User = {
   id: number;
@@ -118,7 +119,7 @@ export default function ChatRoom() {
     }
   }, [messages, roomId]);
 
-  const send = () => {
+  const send = useCallback(() => {
     const v = input.trim();
     if (!v) return;
     const now = new Date();
@@ -135,9 +136,10 @@ export default function ChatRoom() {
     if (inputRef.current) {
       inputRef.current.style.height = "44px";
     }
-  };
+  }, [input]);
+
   // 텍스트 크기 제한
-  const onChangeInput = (v: string) => {
+  const onChangeInput = useCallback((v: string) => {
     setInput(v);
     if (!inputRef.current) return;
     inputRef.current.style.height = "auto";
@@ -145,7 +147,7 @@ export default function ChatRoom() {
     const maxH = 120;
     const finalH = Math.max(baseH,Math.min(inputRef.current.scrollHeight, maxH))
     inputRef.current.style.height = finalH + "px";
-  };
+  }, []);
 
   // 새 메시지 들어오면 스크롤 하단
   useEffect(() => {
@@ -194,54 +196,18 @@ export default function ChatRoom() {
       </div>
       {/* 메시지 리스트 */}
       <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-2 space-y-4">
-        {messages.map((m) => {
-          const mine = m.user === "me";
-          return (
-            <div key={m.id}>
-              {m.date && (
-                <div className="mb-6 grid place-items-center">
-                  <div className="inline-flex items-center justify-center 
-                  px-3 py-1 rounded-full bg-black w-[80px] h-[24px]">
-                  <span className=" text-white text-[12px] leading-[16px]">
-                    {m.date}
-                  </span>
-                  </div>
-                </div>
-              )}
-
-              {/* 각 메시지 블럭 */}
-              <div className={`${mine ? "justify-end" : "justify-start"}`}>
-                {/* 상대 메시지*/}
-                {!mine ? (
-                  <div className="mb-1 py-2 flex items-start gap-2">
-                    <img
-                      src={m.url || "/icons/defaultProfile.svg"}
-                      alt={m.name || "user"}
-                      className="w-[24px] h-[24px] bg-gray-500 rounded-full "
-                    />
-                    <div className="flex flex-col">
-                      <span className="text-[14px] max-w-[70px] truncate">{m.name || "user"}</span>
-                      <div className="flex flex-row items-end gap-1">
-                        <span className="mt-2 inline-block px-3 py-2 text-[16px] leading-[22px]
-                        max-w-[230px] break-words whitespace-pre-wrap
-                        [border-radius:0px_12px_12px_12px] bg-gray-100 text-gray-500">{m.text}</span>
-                        {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  //내 메시지
-                  <div className="flex flex-row-reverse items-end gap-1">
-                    <span className="inline-block px-3 py-2 text-[16px] leading-[22px]
-                        max-w-[230px] break-words whitespace-pre-wrap
-                        [border-radius:12px_0px_12px_12px] bg-white border border-gray-200 text-gray-800">{m.text}</span>
-                    {m.time && <time className="text-[10px] text-gray-400 select-none">{m.time}</time>}
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        })}
+        {messages.map((m) => (
+          <MessageItem
+            key={m.id}
+            id={m.id}
+            user={m.user}
+            text={m.text}
+            date={m.date}
+            time={m.time}
+            name={m.name}
+            url={m.url}
+          />
+        ))}
       </div>
 
       {/* 입력창 + 전송 */}

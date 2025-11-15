@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Dropdown from "../components/Dropdown";
 
 type Room = {
@@ -26,6 +26,12 @@ export default function Chat() {
       })
       .catch((err) => console.error("Failed to load rooms:", err));
   }, []);
+
+  // 학기별로 필터링된 채팅방 리스트 (useMemo로 캐싱)
+  const filteredRooms = useMemo(() => {
+    if (!semester) return rooms;
+    return rooms.filter(r => r.semester === semester);
+  }, [rooms, semester]);
 
   return (
     <div className="w-full h-full bg-white flex flex-col">
@@ -60,7 +66,7 @@ export default function Chat() {
         {/* 리스트 */}
         <main className="flex-1">
           <ul className="divide-y divide-neutral-200">
-            {rooms.map((r) => (
+            {filteredRooms.map((r) => (
               <li key={r.id} className="mt-4 py-3 px-2">
                 <button
                   type="button"

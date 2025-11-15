@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 interface ParticipantItemProps {
   id: number;
   name: string;
@@ -5,7 +7,7 @@ interface ParticipantItemProps {
   isMe: boolean;
 }
 
-export default function ParticipantItem({ name, profileUrl, isMe }: ParticipantItemProps) {
+function ParticipantItem({ name, profileUrl, isMe }: ParticipantItemProps) {
   return (
     <li className="flex items-center gap-3">
       <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden shrink-0">
@@ -25,3 +27,5 @@ export default function ParticipantItem({ name, profileUrl, isMe }: ParticipantI
     </li>
   );
 }
+
+export default memo(ParticipantItem);
